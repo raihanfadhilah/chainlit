@@ -2,7 +2,9 @@ import functools
 import json
 import os
 from collections import deque
+from dotenv import load_dotenv
 from typing import TYPE_CHECKING, Dict, List, Optional, Union
+
 
 import aiofiles
 from chainlit.config import config
@@ -25,6 +27,10 @@ if TYPE_CHECKING:
 
 _data_layer = None
 
+try:
+    load_dotenv()
+except:
+    pass
 
 def queue_until_user_message():
     def decorator(method):
